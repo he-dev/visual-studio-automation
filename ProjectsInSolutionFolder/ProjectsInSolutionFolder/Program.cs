@@ -20,12 +20,34 @@ namespace ProjectsInSolutionFolder
 
             var lib = FindSolutionFolder(sln, "lib");
 
+            var basePath = @"C:\Home\Projects\Reusable";
             var projectPaths = new[]
             {
-                @"C:\Home\Projects\Reusable\Reusable.Core\Reusable.Core.csproj",
-                @"C:\Home\Projects\Reusable\Reusable.Flexo\Reusable.Flexo.csproj",
-                @"C:\Home\Projects\Reusable\Reusable.IOnymous\Reusable.IOnymous.csproj",
-            };
+                "Reusable.Commander",
+                "Reusable.Core",
+                "Reusable.Cryptography",
+                "Reusable.Deception",
+                "Reusable.Flexo",
+                "Reusable.IOnymous",
+                "Reusable.IOnymous.Http",
+                "Reusable.IOnymous.Http.Mailr",
+                "Reusable.IOnymous.Mail",
+                "Reusable.IOnymous.Mail.Smtp",
+                "Reusable.OmniLog",
+                "Reusable.OmniLog.Abstractions",
+                "Reusable.OmniLog.ColoredConsoleRx",
+                "Reusable.OmniLog.NLogRx",
+                "Reusable.OmniLog.SemanticExtensions",
+                "Reusable.OmniLog.SemanticMiddleware",
+                "Reusable.OneTo1",
+                "Reusable.SemanticVersion",
+                "Reusable.SmartConfig",
+                "Reusable.SmartConfig.SqlServer",
+                "Reusable.Utilities.AspNetCore",
+                "Reusable.Utilities.JsonNet",
+                "Reusable.Utilities.NLog",
+                "Reusable.Utilities.SqlClient",
+            }.Select(n => Path.Combine(basePath, n, $"{n}.csproj"));
 
             foreach (var path in projectPaths)
             {
