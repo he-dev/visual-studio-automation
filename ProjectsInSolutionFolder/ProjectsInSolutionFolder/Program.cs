@@ -33,6 +33,7 @@ namespace ProjectsInSolutionFolder
                 "Reusable.IOnymous.Http.Mailr",
                 "Reusable.IOnymous.Mail",
                 "Reusable.IOnymous.Mail.Smtp",
+                "Reusable.MarkupBuilder",
                 "Reusable.OmniLog",
                 "Reusable.OmniLog.Abstractions",
                 "Reusable.OmniLog.ColoredConsoleRx",
