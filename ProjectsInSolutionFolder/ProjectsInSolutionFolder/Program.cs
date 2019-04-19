@@ -4,13 +4,13 @@ using System.Linq;
 using EnvDTE;
 using EnvDTE80;
 
-namespace SolutionAutomation
+namespace ProjectsInSolutionFolder
 {
-    class Program
+    public static class Program
     {
         private const string VisualStudio2019 = "VisualStudio.DTE.16.0";
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var dteType = Type.GetTypeFromProgID(VisualStudio2019, true);
             var dte = (DTE)Activator.CreateInstance(dteType);
@@ -24,16 +24,20 @@ namespace SolutionAutomation
             {
                 @"C:\Home\Projects\Reusable\Reusable.Core\Reusable.Core.csproj",
                 @"C:\Home\Projects\Reusable\Reusable.Flexo\Reusable.Flexo.csproj",
-                @"C:\Home\Projects\Reusable\Reusable.IOnymous\Reusable.IOnymous.csproj"
+                @"C:\Home\Projects\Reusable\Reusable.IOnymous\Reusable.IOnymous.csproj",
             };
 
             foreach (var path in projectPaths)
             {
                 var name = Path.GetFileNameWithoutExtension(path);
-                if (!lib.Parent.ProjectItems.Cast<ProjectItem>().Any(pi => pi.Name == name))
+                if (lib.Parent.ProjectItems.Cast<ProjectItem>().Any(pi => pi.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine($"{name} - exists");
+                }
+                else
                 {
                     lib.AddFromFile(path);
-                    Console.WriteLine($"Added: {name}");
+                    Console.WriteLine($"{name} - added");                    
                 }
             }
 
